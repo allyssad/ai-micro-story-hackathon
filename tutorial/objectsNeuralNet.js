@@ -6,6 +6,9 @@ import brain from 'brain.js';
 // in brain.js you don't have to define all the properties
 // if they're missing, it uses a 0
 
+// using an object to define a neural net
+// do so with it's properties defined as number
+
 const colors = [
   { green: 0.2, blue: 0.4 }, // red is missing, so it will be 0
   { green: 0.4, blue: 0.6 },
