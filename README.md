@@ -1,1 +1,1 @@
-# brain-hackathon
+# ai-micro-story-hackathon
