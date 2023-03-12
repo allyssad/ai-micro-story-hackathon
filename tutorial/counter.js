@@ -1,5 +1,6 @@
 import brain from 'brain.js';
 // count to 5
+// using Long-Short-Term-Memory-TimeStep
 
 // inputs have width and height => length
 // width * height = length
