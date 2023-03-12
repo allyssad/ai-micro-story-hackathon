@@ -23,7 +23,7 @@ const Welcome = () => {
         style || "children's book illustration"
       } art`,
       n: 1,
-      size: '1024x1024',
+      size: '512x512',
     });
 
     setImageSrc(response.data.data[0].url);
@@ -113,10 +113,11 @@ const Welcome = () => {
             <option value='' disabled>
               Select a Style:
             </option>
-            <option value={'digital art'}>Digital Art</option>
+            <option value={'digital'}>Digital Art</option>
             <option value={"children's book illustration"}>Illustration</option>
-            <option value={'pixel art'}>Pixel Art</option>
-            <option value={'photorealistic'}>Photorealistic</option>
+            <option value={'pixel'}>Pixel Art</option>
+            <option value={'watercolor'}>Watercolor</option>
+            <option value={'flat'}>Flat Art</option>
           </select>
         </div>
         <button type='submit'>Go!</button>
