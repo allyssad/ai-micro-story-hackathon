@@ -87,6 +87,9 @@ const Home = () => {
 
   return (
     <div id='homepage'>
+      <h2>
+        Add your own details or go ahead and press Magic for a random fun story!
+      </h2>
       <Box
         sx={{
           '& .MuiTextField-root': { m: 1, width: '35ch' },
@@ -109,11 +112,11 @@ const Home = () => {
             label='topic'
             value={topic}
             onChange={(evt) => {
-              setTopic(evt.target.value);
+              setTopic(evt.target.value.toLowerCase());
             }}
           />
           <FormControl sx={{ m: 1, minWidth: '35ch' }}>
-            <InputLabel id='style-select'>Art Style</InputLabel>
+            <InputLabel id='style-select'>art style</InputLabel>
             <Select
               type='text'
               labelId='select-label'
@@ -137,6 +140,7 @@ const Home = () => {
       </Box>
       <div id='generateMagicButton'>
         <Button
+          id='magic'
           variant='contained'
           disableElevation
           onClick={() => {
@@ -146,36 +150,42 @@ const Home = () => {
           MAGIC!
         </Button>
       </div>
-      <Box
-        sx={{ width: '65%' }}
-        m='auto'
-        display='flex'
-        flexDirection='column'
-        alignItems='center'
-        justifyContent='center'
-        gap='15px'
-      >
-        <div id='generatedShortStory'>
-          {story.length ? <p>{story}</p> : null}
-        </div>
-        <Box
-        // id='generatedImageAndSummary'
-        // sx={{ width: '100%' }}
-        // m='auto'
-        // display='flex'
-        // flexDirection='column'
-        // alignItems='center'
-        // justifyContent='center'
-        >
-          {imageSrc.length ? (
-            <div>
-              <img src={imageSrc} id='generatedImage'></img>
-              <p>{tldr ? tldr : null}</p>
-              <p>In the style of: {style ? style : 'illustration'}</p>
+      {story.length ? (
+        <div id='ai'>
+          <Box
+            sx={{ width: '65%' }}
+            m='auto'
+            display='flex'
+            flexDirection='column'
+            alignItems='center'
+            justifyContent='center'
+            gap='15px'
+          >
+            <div id='generatedShortStory'>
+              {story.length ? <p>{story}</p> : null}
             </div>
-          ) : null}
-        </Box>
-      </Box>
+            <Box
+              id='generatedImageAndSummary'
+              sx={{ width: '100%' }}
+              m='auto'
+              display='flex'
+              flexDirection='column'
+              alignItems='center'
+              justifyContent='center'
+            >
+              {imageSrc.length ? (
+                <div id='results'>
+                  <img src={imageSrc} id='generatedImage'></img>
+                  <div id='caption'>
+                    <p>{tldr ? tldr : null}</p>
+                    <p>(art style: {style ? style : 'illustration'})</p>
+                  </div>
+                </div>
+              ) : null}
+            </Box>
+          </Box>
+        </div>
+      ) : null}
     </div>
   );
 };
