@@ -70,8 +70,9 @@ const Home = () => {
 
     let generatedSummary = response.data.choices[0].text.trim();
 
-    if (generatedSummary[0] === ':' || generatedSummary[0] === '-')
+    if (generatedSummary[0] === ':' || generatedSummary[0] === '-') {
       generatedSummary = generatedSummary.slice(1);
+    }
 
     setTldr(generatedSummary);
 
@@ -123,10 +124,10 @@ const Home = () => {
                 setStyle(evt.target.value);
               }}
             >
-              <MenuItem value={'digital'}>Digital Art</MenuItem>
               <MenuItem value={"children's book illustration"}>
                 Illustration
               </MenuItem>
+              <MenuItem value={'digital'}>Digital Art</MenuItem>
               <MenuItem value={'pixel'}>Pixel Art</MenuItem>
               <MenuItem value={'watercolor'}>Watercolor</MenuItem>
               <MenuItem value={'flat'}>Flat Art</MenuItem>
@@ -134,7 +135,7 @@ const Home = () => {
           </FormControl>
         </div>
       </Box>
-      <div>
+      <div id='generateMagicButton'>
         <Button
           variant='contained'
           disableElevation
@@ -152,6 +153,7 @@ const Home = () => {
         flexDirection='column'
         alignItems='center'
         justifyContent='center'
+        gap='15px'
       >
         <div id='generatedShortStory'>
           {story.length ? <p>{story}</p> : null}

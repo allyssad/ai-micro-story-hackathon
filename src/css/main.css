@@ -31,10 +31,20 @@ nav {
   text-align: center;
 }
 
-/* #generatedShortStory {
+#art {
+  text-align: left;
+}
+
+#generatedShortStory {
   text-align: center;
-} */
+}
 
 #generatedImage {
   margin: auto;
+  border: 10px solid #8873be;
+  border-radius: 10px;
+}
+
+#generateMagicButton {
+  margin: 10px;
 }
