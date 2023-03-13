@@ -1,6 +1,15 @@
 import { useState } from 'react';
 import '../css/main.css';
 import { Configuration, OpenAIApi } from 'openai';
+import {
+  Box,
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Button,
+} from '@mui/material';
 
 // flat art, surrealistic art, naturalism,
 
@@ -18,9 +27,9 @@ const Home = () => {
 
   const openai = new OpenAIApi(configuration);
 
-  const generateImage = async () => {
+  const generateImage = async (context) => {
     const response = await openai.createImage({
-      prompt: `${tldr || story} in the style of ${
+      prompt: `${context || story} in the style of ${
         style || "children's book illustration"
       } art`,
       n: 1,
@@ -45,13 +54,13 @@ const Home = () => {
 
     const generatedStory = response.data.choices[0].text;
     setStory(generatedStory);
-    // console.log(generatedStory);
+    return generatedStory;
   };
 
-  const generateSummary = async () => {
+  const generateSummary = async (context) => {
     const response = await openai.createCompletion({
       model: 'text-davinci-003',
-      prompt: `${story}\n\nTl;dr`,
+      prompt: `${context}\n\nTl;dr`,
       temperature: 0.7,
       max_tokens: 30,
       top_p: 1.0,
@@ -64,81 +73,104 @@ const Home = () => {
       generatedSummary = generatedSummary.slice(1);
     // console.log(generatedSummary);
     setTldr(generatedSummary);
+    return generatedSummary;
   };
 
-  // const saveHandler = () => {
-  //   console.log('save');
-  // };
+  const generateMagic = async (shortStory, storySummary) => {
+    let story = await shortStory();
+    console.log(story);
+    let summary = await storySummary(story);
+    console.log(summary);
+    generateImage(summary);
+  };
 
   return (
     <div id='homepage'>
-      <form onSubmit={generateShortStory}>
-        <label htmlFor='name'>Enter a name:</label>
-        <input
-          type='text'
-          label='name'
-          value={name}
-          onChange={(evt) => {
-            setName(evt.target.value);
-          }}
-        ></input>
-        <label htmlFor='topic'>Enter a topic:</label>
-        <input
-          type='text'
-          label='topic'
-          value={topic}
-          onChange={(evt) => {
-            setTopic(evt.target.value);
-          }}
-        ></input>
-        <div>
-          <label htmlFor='style-select'>Select an Art Style:</label>
-          <select
-            name='styles'
-            id='style-select'
+      <Box
+        sx={{
+          '& .MuiTextField-root': { m: 1, width: '35ch' },
+        }}
+        noValidate
+        autoComplete='off'
+      >
+        <div id='story-inputs'>
+          <TextField
             type='text'
-            value={style}
+            label='name'
+            value={name}
             onChange={(evt) => {
-              setStyle(evt.target.value);
+              setName(evt.target.value);
             }}
-          >
-            <option value='' disabled>
-              Select a Style:
-            </option>
-            <option value={'digital'}>Digital Art</option>
-            <option value={"children's book illustration"}>Illustration</option>
-            <option value={'pixel'}>Pixel Art</option>
-            <option value={'watercolor'}>Watercolor</option>
-            <option value={'flat'}>Flat Art</option>
-          </select>
+          />
+
+          <TextField
+            type='text'
+            label='topic'
+            value={topic}
+            onChange={(evt) => {
+              setTopic(evt.target.value);
+            }}
+          />
+          <FormControl sx={{ m: 1, minWidth: '35ch' }}>
+            <InputLabel id='style-select'>Art Style</InputLabel>
+            <Select
+              type='text'
+              labelId='select-label'
+              label='art style'
+              id='art'
+              value={style}
+              onChange={(evt) => {
+                setStyle(evt.target.value);
+              }}
+            >
+              <MenuItem value={'digital'}>Digital Art</MenuItem>
+              <MenuItem value={"children's book illustration"}>
+                Illustration
+              </MenuItem>
+              <MenuItem value={'pixel'}>Pixel Art</MenuItem>
+              <MenuItem value={'watercolor'}>Watercolor</MenuItem>
+              <MenuItem value={'flat'}>Flat Art</MenuItem>
+            </Select>
+          </FormControl>
+          {/* <button type='submit'>Go!</button> */}
         </div>
-        <button type='submit'>Go!</button>
-      </form>
+      </Box>
       <div>
-        <h2>RESULTS:</h2>
+        <Button
+          variant='contained'
+          disableElevation
+          onClick={() => {
+            generateMagic(generateShortStory, generateSummary);
+          }}
+        >
+          MAGIC!
+        </Button>
       </div>
-      <div> {story.length ? <p>{story}</p> : 'AI Micro Story Holder...'}</div>
+      <div> {story.length ? <p>{story}</p> : null}</div>
       <div>
         {imageSrc.length ? (
           <>
             <img src={imageSrc}></img>
-            <p>{tldr}</p>
+            <p>{tldr ? tldr : ''}</p>
             <p>In the style of: {style ? style : 'illustration'}</p>
           </>
-        ) : (
-          'AI Image Holder...'
-        )}
+        ) : null}
       </div>
       {/* <button onSubmit={saveHandler}>SAVE</button> */}
-      <div>
-        <button onClick={generateShortStory}>Story</button>
-      </div>
-      <div>
+      {/* <Button
+          variant='contained'
+          disableElevation
+          onClick={generateShortStory}
+        >
+          Story
+        </Button> */}
+
+      {/* <div>
         <button onClick={generateSummary}>Summary</button>
       </div>
       <div>
         <button onClick={generateImage}>Image</button>
-      </div>
+      </div> */}
     </div>
   );
 };
