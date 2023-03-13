@@ -4,7 +4,7 @@ import { Configuration, OpenAIApi } from 'openai';
 
 // flat art, surrealistic art, naturalism,
 
-const Welcome = () => {
+const Home = () => {
   const [name, setName] = useState('');
   const [topic, setTopic] = useState('');
   const [style, setStyle] = useState('');
@@ -15,6 +15,7 @@ const Welcome = () => {
   const configuration = new Configuration({
     apiKey: import.meta.env.VITE_OPENAI_API_KEY,
   });
+
   const openai = new OpenAIApi(configuration);
 
   const generateImage = async () => {
@@ -44,7 +45,7 @@ const Welcome = () => {
 
     const generatedStory = response.data.choices[0].text;
     setStory(generatedStory);
-    console.log(generatedStory);
+    // console.log(generatedStory);
   };
 
   const generateSummary = async () => {
@@ -61,25 +62,16 @@ const Welcome = () => {
     let generatedSummary = response.data.choices[0].text.trim();
     if (generatedSummary[0] === ':' || generatedSummary[0] === '-')
       generatedSummary = generatedSummary.slice(1);
-    console.log(generatedSummary);
+    // console.log(generatedSummary);
     setTldr(generatedSummary);
   };
 
-  const callOpenAIAPI = async (evt) => {
-    evt.preventDefault();
-    console.log('calling OpenAI API');
-    console.log('NAME:', name);
-    console.log('TOPIC:', topic);
-    console.log('STYLE:', style);
-  };
-
-  const saveHandler = () => {
-    console.log('save');
-  };
+  // const saveHandler = () => {
+  //   console.log('save');
+  // };
 
   return (
-    <>
-      <h1>AI Micro Story Hour</h1>
+    <div id='homepage'>
       <form onSubmit={generateShortStory}>
         <label htmlFor='name'>Enter a name:</label>
         <input
@@ -137,18 +129,18 @@ const Welcome = () => {
           'AI Image Holder...'
         )}
       </div>
-      <button onSubmit={saveHandler}>SAVE</button>
-      <div>
-        <button onClick={generateImage}>Image</button>
-      </div>
+      {/* <button onSubmit={saveHandler}>SAVE</button> */}
       <div>
         <button onClick={generateShortStory}>Story</button>
       </div>
       <div>
         <button onClick={generateSummary}>Summary</button>
       </div>
-    </>
+      <div>
+        <button onClick={generateImage}>Image</button>
+      </div>
+    </div>
   );
 };
 
-export default Welcome;
+export default Home;

@@ -1,9 +1,14 @@
-import Welcome from './components/Welcome';
+import { Routes, Route } from 'react-router-dom';
+import { Home, NavBar } from './components/index';
 
 const App = () => {
   return (
     <>
-      <Welcome />
+      <NavBar />
+
+      <Routes>
+        <Route path='/' element={<Home />} />
+      </Routes>
     </>
   );
 };
