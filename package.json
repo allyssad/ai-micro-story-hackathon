@@ -10,6 +10,11 @@
     "style": "npx tailwindcss -i ./src/css/index.css -o ./public/tailwind.css --watch"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/icons-material": "^5.11.11",
+    "@mui/material": "^5.11.12",
     "@reduxjs/toolkit": "^1.9.3",
     "brain.js": "^1.6.1",
     "openai": "^3.2.1",
