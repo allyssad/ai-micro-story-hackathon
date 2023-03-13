@@ -42,7 +42,7 @@ const Home = () => {
   const generateShortStory = async () => {
     const response = await openai.createCompletion({
       model: 'text-davinci-003',
-      prompt: `Topic: Unicorn\nTwo-Sentence Happy Story: Once upon a time, there was a happy unicorn named Sparkles who lived in a magical meadow filled with rainbows and sunshine. Sparkles spent her days frolicking through the meadow, spreading joy and laughter wherever she went.\n    \nTopic: ${
+      prompt: `Topic: Unicorn\nTwo-Sentence Happy Story: Once upon a time, there was a happy unicorn named Sparkles who lived in a magical meadow filled with rainbows and sunshine. Sparkles spent her days frolicking through the meadow, spreading joy and laughter wherever she went.\n    \nTopic: Clam\nTwo-Sentence Happy Story:In the depths of the ocean, there was a little clam named Sammy. Sammy was a happy clam, content with his life in the sandy seabed, basking in the warm sunlight filtering through the water.\n    \nTopic: ${
         name ? name + ' ' + topic : topic
       }\nTwo-Sentence Happy Story: .`,
       temperature: 0.8,
@@ -145,16 +145,35 @@ const Home = () => {
           MAGIC!
         </Button>
       </div>
-      <div id='generatedShortStory'>{story.length ? <p>{story}</p> : null}</div>
-      <div id='generatedImageAndSummary'>
-        {imageSrc.length ? (
-          <>
-            <img src={imageSrc}></img>
-            <p>{tldr ? tldr : null}</p>
-            <p>In the style of: {style ? style : 'illustration'}</p>
-          </>
-        ) : null}
-      </div>
+      <Box
+        sx={{ width: '65%' }}
+        m='auto'
+        display='flex'
+        flexDirection='column'
+        alignItems='center'
+        justifyContent='center'
+      >
+        <div id='generatedShortStory'>
+          {story.length ? <p>{story}</p> : null}
+        </div>
+        <Box
+        // id='generatedImageAndSummary'
+        // sx={{ width: '100%' }}
+        // m='auto'
+        // display='flex'
+        // flexDirection='column'
+        // alignItems='center'
+        // justifyContent='center'
+        >
+          {imageSrc.length ? (
+            <div>
+              <img src={imageSrc} id='generatedImage'></img>
+              <p>{tldr ? tldr : null}</p>
+              <p>In the style of: {style ? style : 'illustration'}</p>
+            </div>
+          ) : null}
+        </Box>
+      </Box>
     </div>
   );
 };
