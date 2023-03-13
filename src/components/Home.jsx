@@ -69,18 +69,18 @@ const Home = () => {
     });
 
     let generatedSummary = response.data.choices[0].text.trim();
+
     if (generatedSummary[0] === ':' || generatedSummary[0] === '-')
       generatedSummary = generatedSummary.slice(1);
-    // console.log(generatedSummary);
+
     setTldr(generatedSummary);
+
     return generatedSummary;
   };
 
   const generateMagic = async (shortStory, storySummary) => {
     let story = await shortStory();
-    console.log(story);
     let summary = await storySummary(story);
-    console.log(summary);
     generateImage(summary);
   };
 
@@ -132,7 +132,6 @@ const Home = () => {
               <MenuItem value={'flat'}>Flat Art</MenuItem>
             </Select>
           </FormControl>
-          {/* <button type='submit'>Go!</button> */}
         </div>
       </Box>
       <div>
@@ -146,31 +145,16 @@ const Home = () => {
           MAGIC!
         </Button>
       </div>
-      <div> {story.length ? <p>{story}</p> : null}</div>
-      <div>
+      <div id='generatedShortStory'>{story.length ? <p>{story}</p> : null}</div>
+      <div id='generatedImageAndSummary'>
         {imageSrc.length ? (
           <>
             <img src={imageSrc}></img>
-            <p>{tldr ? tldr : ''}</p>
+            <p>{tldr ? tldr : null}</p>
             <p>In the style of: {style ? style : 'illustration'}</p>
           </>
         ) : null}
       </div>
-      {/* <button onSubmit={saveHandler}>SAVE</button> */}
-      {/* <Button
-          variant='contained'
-          disableElevation
-          onClick={generateShortStory}
-        >
-          Story
-        </Button> */}
-
-      {/* <div>
-        <button onClick={generateSummary}>Summary</button>
-      </div>
-      <div>
-        <button onClick={generateImage}>Image</button>
-      </div> */}
     </div>
   );
 };
