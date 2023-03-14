@@ -30,7 +30,7 @@ const Home = () => {
   const generateImage = async (context) => {
     const response = await openai.createImage({
       prompt: `${context || story} in the style of ${
-        style || "children's book illustration"
+        style || 'watercolor'
       } art`,
       n: 1,
       size: '512x512',
@@ -127,12 +127,12 @@ const Home = () => {
                 setStyle(evt.target.value);
               }}
             >
+              <MenuItem value={'watercolor'}>Watercolor</MenuItem>
               <MenuItem value={"children's book illustration"}>
                 Illustration
               </MenuItem>
               <MenuItem value={'digital'}>Digital Art</MenuItem>
               <MenuItem value={'pixel'}>Pixel Art</MenuItem>
-              <MenuItem value={'watercolor'}>Watercolor</MenuItem>
               <MenuItem value={'flat'}>Flat Art</MenuItem>
             </Select>
           </FormControl>
