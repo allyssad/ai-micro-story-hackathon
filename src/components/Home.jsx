@@ -86,7 +86,10 @@ const Home = () => {
   };
 
   return (
-    <div id='homepage'>
+    <div
+      id='homepage'
+      className="bg-[url('img/abstract-bg.jpg')] h-full bg-center w-screen bg-no-repeat bg-cover"
+    >
       <h2>
         Add your own details or go ahead and press Magic for a random fun story!
       </h2>
