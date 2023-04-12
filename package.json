@@ -1,5 +1,5 @@
 {
-  "name": "brain-hackathon",
+  "name": "ai-magic-story",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "style": "npx tailwindcss -i ./src/css/index.css -o ./public/tailwind.css --watch"
+    "style": "npx tailwindcss -i ./src/index.css -o ./public/tailwind.css --watch"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -16,7 +16,6 @@
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.12",
     "@reduxjs/toolkit": "^1.9.3",
-    "brain.js": "^1.6.1",
     "openai": "^3.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -27,7 +26,9 @@
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
-    "tailwindcss": "^3.2.7",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.3.1",
     "vite": "^4.1.0"
   }
 }
