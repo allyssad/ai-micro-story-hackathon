@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../css/main.css';
+
 import { Configuration, OpenAIApi } from 'openai';
 import {
   Box,
@@ -86,8 +86,11 @@ const Home = () => {
   };
 
   return (
-    <div id='homepage'>
-      <h2>
+    <div
+      id='homepage'
+      className="bg-[url('src/img/abstract-bg.jpg')] h-[calc(100vh_-_5rem)] bg-cover"
+    >
+      <h2 className=''>
         Add your own details or go ahead and press Magic for a random fun story!
       </h2>
       <Box
