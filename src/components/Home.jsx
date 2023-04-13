@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import { Configuration, OpenAIApi } from 'openai';
 import {
   Box,
@@ -10,6 +9,7 @@ import {
   MenuItem,
   Button,
 } from '@mui/material';
+import html2canvas from 'html2canvas';
 
 // flat art, surrealistic art, naturalism,
 
@@ -83,6 +83,15 @@ const Home = () => {
     let story = await shortStory();
     let summary = await storySummary(story);
     generateImage(summary);
+  };
+
+  const saveStory = async () => {
+    const canvas = await html2canvas(document.querySelector('#ai'), {
+      logging: true,
+      letterRendering: 1,
+      allowTaint: true,
+    });
+    document.body.appendChild(canvas);
   };
 
   return (
@@ -189,6 +198,9 @@ const Home = () => {
           </Box>
         </div>
       ) : null}
+      <div>
+        <button onClick={saveStory}>SAVE</button>
+      </div>
     </div>
   );
 };

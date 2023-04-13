@@ -16,6 +16,7 @@
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.12",
     "@reduxjs/toolkit": "^1.9.3",
+    "html2canvas": "^1.4.1",
     "nodemon": "^2.0.22",
     "openai": "^3.2.1",
     "react": "^18.2.0",
