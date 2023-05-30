@@ -7,10 +7,12 @@ body {
   background-image: url('https://img.freepik.com/free-vector/colorful-background-vector-cute-pastel-line-pattern_53876-116800.jpg?w=740&t=st=1685460469~exp=1685461069~hmac=f29b03cc15d7b5e20451bb92eaa2e9b0b1666090d082f2aace8cccd24caa9c03');
   width: 100vw;
   height: 100vh;
+
   background-repeat: no-repeat;
   background-position: center;
+  background-attachment: fixed;
   background-size: 100% 100%;
-  position: sticky;
+  /* position: sticky; */
 }
 
 h1 {
@@ -92,5 +94,6 @@ h2 {
 
 .screenshot {
   padding-top: 20px;
+  padding-bottom: 35px;
   font-style: italic;
 }
