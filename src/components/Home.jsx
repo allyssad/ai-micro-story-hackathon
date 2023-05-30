@@ -90,10 +90,68 @@ const Home = () => {
       id='homepage'
       className="bg-[url('src/img/abstract-bg.jpg')] h-[calc(100vh_-_5rem)] bg-cover"
     >
-      <h2 className=''>
-        Add your own details or go ahead and press Magic for a random fun story!
-      </h2>
-      <Box
+      <div className='flex flex-col gap-5'>
+        <section>
+          <p>
+            Add your own details or press the MAGIC button for a random fun
+            story!
+          </p>
+          <form
+            onSubmit={() => generateMagic(generateShortStory, generateSummary)}
+          >
+            <div className='flex flex-wrap mb-3'>
+              <div className='w-1/3 flex flex-col pr-6'>
+                <label>Name</label>
+                <input
+                  type='text'
+                  className=''
+                  id='name'
+                  placeholder='Celeste'
+                  value={name}
+                  onChange={(evt) => {
+                    setName(evt.target.value);
+                  }}
+                />
+              </div>
+              <div className='w-1/3 flex flex-col pr-6'>
+                <label>Topic</label>
+                <input
+                  type='text'
+                  className=''
+                  id='name'
+                  placeholder='space'
+                  value={topic}
+                  onChange={(evt) => {
+                    setTopic(evt.target.value);
+                  }}
+                />
+              </div>
+              <div className='w-1/3 flex flex-col'>
+                <label>Art Style</label>
+                <select
+                  id='art-style'
+                  name='art'
+                  value={style}
+                  onChange={(evt) => {
+                    setStyle(evt.target.value);
+                  }}
+                >
+                  <option disabled></option>
+                  <option value={'watercolor'}>Watercolor</option>
+                  <option value={"children's book illustration"}>
+                    Illustration
+                  </option>
+                  <option value={'digital'}>Digital Art</option>
+                  <option value={'pixel'}>Pixel Art</option>
+                  <option value={'flat'}>Flat Art</option>
+                </select>
+              </div>
+              <button type='submit'>MAGIC!</button>
+            </div>
+          </form>
+        </section>
+      </div>
+      {/* <Box
         sx={{
           '& .MuiTextField-root': { m: 1, width: '35ch' },
         }}
@@ -140,8 +198,8 @@ const Home = () => {
             </Select>
           </FormControl>
         </div>
-      </Box>
-      <div id='generateMagicButton'>
+      </Box> */}
+      {/* <div id='generateMagicButton'>
         <Button
           id='magic'
           variant='contained'
@@ -152,7 +210,7 @@ const Home = () => {
         >
           MAGIC!
         </Button>
-      </div>
+      </div> */}
       {story.length ? (
         <div id='ai'>
           <Box
@@ -181,7 +239,7 @@ const Home = () => {
                   <img src={imageSrc} id='generatedImage'></img>
                   <div id='caption'>
                     <p>{tldr ? tldr : null}</p>
-                    <p>(art style: {style ? style : 'illustration'})</p>
+                    <p>(art style: {style ? style : 'watercolor'})</p>
                   </div>
                 </div>
               ) : null}
