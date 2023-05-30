@@ -151,40 +151,45 @@ const Home = () => {
         </Button>
       </div>
       {story.length ? (
-        <div id='ai'>
-          <Box
-            sx={{ width: '65%' }}
-            m='auto'
-            display='flex'
-            flexDirection='column'
-            alignItems='center'
-            justifyContent='center'
-            gap='15px'
-          >
-            <div id='generatedShortStory'>
-              {story.length ? <p>{story}</p> : null}
-            </div>
+        <>
+          <div id='ai'>
             <Box
-              id='generatedImageAndSummary'
-              sx={{ width: '100%' }}
+              sx={{ width: '65%' }}
               m='auto'
               display='flex'
               flexDirection='column'
               alignItems='center'
               justifyContent='center'
+              gap='15px'
             >
-              {imageSrc.length ? (
-                <div id='results'>
-                  <img src={imageSrc} id='generatedImage'></img>
-                  <div id='caption'>
-                    <p>{tldr ? tldr : null}</p>
-                    <p>(art style: {style ? style : 'watercolor'})</p>
+              <div id='generatedShortStory'>
+                {story.length ? <p>{story}</p> : null}
+              </div>
+              <Box
+                id='generatedImageAndSummary'
+                sx={{ width: '100%' }}
+                m='auto'
+                display='flex'
+                flexDirection='column'
+                alignItems='center'
+                justifyContent='center'
+              >
+                {imageSrc.length ? (
+                  <div id='results'>
+                    <img src={imageSrc} id='generatedImage'></img>
+                    <div id='caption'>
+                      <p>{tldr ? tldr : null}</p>
+                      <p>(art style: {style ? style : 'watercolor'})</p>
+                    </div>
                   </div>
-                </div>
-              ) : null}
+                ) : null}
+              </Box>
             </Box>
-          </Box>
-        </div>
+          </div>
+          <p className='screenshot'>
+            If you like this story, take a screenshot!
+          </p>
+        </>
       ) : null}
     </div>
   );

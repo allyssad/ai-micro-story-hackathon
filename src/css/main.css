@@ -89,3 +89,8 @@ nav {
 h2 {
   padding-bottom: 15px;
 }
+
+.screenshot {
+  padding-top: 20px;
+  font-style: italic;
+}
