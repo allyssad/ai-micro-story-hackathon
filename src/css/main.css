@@ -8,21 +8,21 @@ body {
   width: 100vw;
   height: 100vh;
   background-repeat: no-repeat;
+  background-position: center;
   background-size: 100% 100%;
   position: sticky;
 }
 
 h1 {
   color: #8873be;
+  font-size: x-large;
   text-align: center;
 }
 
 nav {
   text-align: center;
-  font-size: xx-large;
   padding-top: 50px;
   /* display: flex;
-
   flex-direction: row;
   height: 75px;
   align-items: center;
@@ -36,7 +36,7 @@ nav {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  margin-top: 35px;
+  margin-top: 15px;
 }
 
 #art {

@@ -178,7 +178,7 @@ const Home = () => {
                   <img src={imageSrc} id='generatedImage'></img>
                   <div id='caption'>
                     <p>{tldr ? tldr : null}</p>
-                    <p>(art style: {style ? style : 'illustration'})</p>
+                    <p>(art style: {style ? style : 'watercolor'})</p>
                   </div>
                 </div>
               ) : null}
