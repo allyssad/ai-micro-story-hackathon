@@ -3,7 +3,8 @@ body {
   /* place-items: center; */
   background-color: #b4a7d6;
   font-family: Arial, Helvetica, sans-serif;
-  background-image: url('src/img/abstract-bg.jpg');
+  /* background-image: url('src/img/abstract-bg.jpg'); */
+  background-image: url('https://img.freepik.com/free-vector/colorful-background-vector-cute-pastel-line-pattern_53876-116800.jpg?w=740&t=st=1685460469~exp=1685461069~hmac=f29b03cc15d7b5e20451bb92eaa2e9b0b1666090d082f2aace8cccd24caa9c03');
   width: 100vw;
   height: 100vh;
   background-repeat: no-repeat;
@@ -17,13 +18,17 @@ h1 {
 }
 
 nav {
-  display: flex;
+  text-align: center;
+  font-size: xx-large;
+  padding-top: 50px;
+  /* display: flex;
+
   flex-direction: row;
   height: 75px;
   align-items: center;
   padding: 10px 25px;
   justify-content: space-between;
-  overflow: auto;
+  overflow: auto; */
 }
 
 #homepage {
