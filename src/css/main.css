@@ -4,7 +4,7 @@ body {
   background-color: #b4a7d6;
   font-family: Arial, Helvetica, sans-serif;
   /* background-image: url('src/img/abstract-bg.jpg'); */
-  background-image: url('https://img.freepik.com/free-vector/colorful-background-vector-cute-pastel-line-pattern_53876-116800.jpg?w=740&t=st=1685460469~exp=1685461069~hmac=f29b03cc15d7b5e20451bb92eaa2e9b0b1666090d082f2aace8cccd24caa9c03');
+  background-image: url('https://img.freepik.com/free-vector/hand-drawn-doodle-background_23-2149995472.jpg?w=1380&t=st=1686608870~exp=1686609470~hmac=5ca652ac0707721c4f99425a4a5f9ed537588a0cd3e663ce7a3262b83fd89886');
   width: 100vw;
   height: 100vh;
 
@@ -14,6 +14,19 @@ body {
   background-size: 100% 100%;
   /* position: sticky; */
 }
+
+/* .MuiInputBase-input {
+  background: white;
+}
+
+.MuiTextField-root {
+  background: white;
+  border-radius: 6px;
+}
+
+.MuiInputBase-root {
+  background: white;
+} */
 
 h1 {
   color: #8873be;

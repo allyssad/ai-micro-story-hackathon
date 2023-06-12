@@ -101,6 +101,9 @@ const Home = () => {
           <TextField
             type='text'
             label='name'
+            variant='filled'
+            color='secondary'
+            focused
             value={name}
             onChange={(evt) => {
               setName(evt.target.value);
@@ -110,17 +113,25 @@ const Home = () => {
           <TextField
             type='text'
             label='topic'
+            variant='filled'
+            color='secondary'
+            focused
             value={topic}
             onChange={(evt) => {
               setTopic(evt.target.value.toLowerCase());
             }}
           />
-          <FormControl sx={{ m: 1, minWidth: '35ch' }}>
+          <FormControl
+            variant='filled'
+            color='secondary'
+            focused
+            sx={{ m: 1, minWidth: '35ch' }}
+          >
             <InputLabel id='style-select'>art style</InputLabel>
             <Select
               type='text'
-              labelId='select-label'
               label='art style'
+              labelId='select-label'
               id='art'
               value={style}
               onChange={(evt) => {
